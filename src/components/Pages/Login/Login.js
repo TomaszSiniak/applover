@@ -1,14 +1,45 @@
 import React, { Component } from 'react'
+import { loginUser, toggleErrorMessage } from '../../../store/actions/login';
+import LoginError from './LoginError';
+import { connect } from 'react-redux';
 import styles from './styles.scss';
 
 class Login extends Component {
+
+
+  state = {
+    email: null,
+    password: null,
+  }
+
+  handleInput = e => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  loginUser = e => {
+    e.preventDefault();
+
+    const { email, password } = this.state;
+    if (!email || !password) return;
+
+    this.props.login(this.state);
+  }
+
   render () {
+    const { errorMessage, closeErrorMessage } = this.props;
     return (
       <div className={styles.LoginWrapper}>
+        {errorMessage && <LoginError closeError={closeErrorMessage}/> }
         <div className={styles.LoginTitle}>Log in</div>
-        <form className={styles.LoginForm}>
-          <input className={styles.LoginInput} type="text" placeholder="Email address"/>
-          <input className={styles.LoginInput} type="password" placeholder="Password" />
+        <form className={styles.LoginForm} onSubmit={this.loginUser}>
+          <input className={styles.LoginInput} onChange={this.handleInput} name="email" type="text" placeholder="Email address" />
+          <input className={styles.LoginInput} onChange={this.handleInput} name="password" type="password" placeholder="Password" />
           <div className={styles.LoginCheckBoxWrapper}>
             <input className={styles.LoginCheckBox} type="checkbox" />
             <div className={styles.LogiCheckBoxDesc}>Keep me logged in</div>
@@ -20,4 +51,18 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    errorMessage: state.loginReducer.isErrorMessageVisible,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: data => dispatch(loginUser(data)),
+    closeErrorMessage: () => dispatch(toggleErrorMessage())
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
