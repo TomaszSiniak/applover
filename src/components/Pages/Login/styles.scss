@@ -55,10 +55,51 @@
   font-size: $font-size-s;
 }
 
-.LoginCheckBox {
+#LoginCheckBox {
+
+  opacity: 0;
+}
+
+.LogiCheckBoxLabel {
+  position: relative;
+  margin-left: 40px;
+  line-height: 30px;
+}
+
+.LogiCheckBoxLabel::before {
+  content: "";
+  display: inline-block;
   width: 28px;
   height: 25px;
-  margin-right: 15px;
+  border: 1px solid #000;
+  position: absolute;
+  top:0;
+  left: -50px;
+}
+
+.LogiCheckBoxLabel::after {
+  content: "";
+  display: inline-block;
+  height: 10px;
+  width: 15px;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transform: rotate(-45deg);
+  position: absolute;
+  top:5px;
+  left:-43px;
+}
+
+.LoginCheckBoxWrapper input[type="checkbox"] + label::after {
+  content: none;
+}
+
+.LoginCheckBoxWrapper input[type="checkbox"]:checked + label::after {
+  content: "";
+}
+
+.LoginCheckBoxWrapper input[type="checkbox"]:focus + label::before {
+  outline: rgb(59, 153, 252) auto 5px;
 }
 
 .LoginErrorWrapper {

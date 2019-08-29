@@ -41,8 +41,8 @@ class Login extends Component {
           <input className={styles.LoginInput} onChange={this.handleInput} name="email" type="text" placeholder="Email address" />
           <input className={styles.LoginInput} onChange={this.handleInput} name="password" type="password" placeholder="Password" />
           <div className={styles.LoginCheckBoxWrapper}>
-            <input className={styles.LoginCheckBox} type="checkbox" />
-            <div className={styles.LogiCheckBoxDesc}>Keep me logged in</div>
+            <input id={styles.LoginCheckBox}  type="checkbox" />
+            <label className={styles.LogiCheckBoxLabel} htmlFor={styles.LoginCheckBox}>Keep me logged in</label>
           </div>
           <button className={styles.LoginButton}>Login</button>
         </form>
