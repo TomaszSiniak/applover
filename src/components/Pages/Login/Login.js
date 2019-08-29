@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { loginUser, toggleErrorMessage } from '../../../store/actions/login';
+import { loginUser, clearErrorMessage, toggleProgressBar } from '../../../store/actions/login';
+import { Redirect } from 'react-router-dom';
 import LoginError from './LoginError';
+import Portal from '../Portal/Portal';
+import ProgressBar from '../../../common/components/ProgressBar/ProgressBar';
 import { connect } from 'react-redux';
 import styles from './styles.scss';
 
@@ -28,24 +31,46 @@ class Login extends Component {
     const { email, password } = this.state;
     if (!email || !password) return;
 
-    this.props.login(this.state);
+    this.handleProgressBar();
+    setTimeout(() => {
+      this.props.login(this.state);
+    }, 2000);
+  }
+
+  handleProgressBar = () => {
+    this.props.showLoader();
+
+    setTimeout(() => {
+      this.props.showLoader();
+    }, 2000);
+  }
+
+  handleCloseLoginError = () => {
+    const value = false;
+    this.props.closeErrorMessage(value)
   }
 
   render () {
-    const { errorMessage, closeErrorMessage } = this.props;
+    const { errorMessage, progressBar, loggedIn } = this.props;
+    if(loggedIn) return <Redirect to='/home' />
     return (
       <div className={styles.LoginWrapper}>
-        {errorMessage && <LoginError closeError={closeErrorMessage}/> }
+        {errorMessage && <LoginError closeError={this.handleCloseLoginError} />}
         <div className={styles.LoginTitle}>Log in</div>
         <form className={styles.LoginForm} onSubmit={this.loginUser}>
           <input className={styles.LoginInput} onChange={this.handleInput} name="email" type="text" placeholder="Email address" />
           <input className={styles.LoginInput} onChange={this.handleInput} name="password" type="password" placeholder="Password" />
           <div className={styles.LoginCheckBoxWrapper}>
-            <input id={styles.LoginCheckBox}  type="checkbox" />
+            <input id={styles.LoginCheckBox} type="checkbox" />
             <label className={styles.LogiCheckBoxLabel} htmlFor={styles.LoginCheckBox}>Keep me logged in</label>
           </div>
           <button className={styles.LoginButton}>Login</button>
         </form>
+        {progressBar && (
+          <Portal>
+            <ProgressBar />
+          </Portal>
+        )}
       </div>
     )
   }
@@ -53,14 +78,17 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
+    loggedIn: state.loginReducer.logged,
     errorMessage: state.loginReducer.isErrorMessageVisible,
+    progressBar: state.loginReducer.isProgressBarVisible,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     login: data => dispatch(loginUser(data)),
-    closeErrorMessage: () => dispatch(toggleErrorMessage())
+    closeErrorMessage: value => dispatch(clearErrorMessage(value)),
+    showLoader: () => dispatch(toggleProgressBar())
 
   }
 }

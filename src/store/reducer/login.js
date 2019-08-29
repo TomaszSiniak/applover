@@ -1,10 +1,11 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR, TOGGLE_ERROR_MESSAGE } from '../actions/login';
+import { LOGIN_SUCCESS, LOGIN_ERROR, ADD_ERROR_MESSAGE, CLEAR_ERROR_MESSAGE, TOGGLE_PROGRESS_BAR_MODAL } from '../actions/login';
 
 const INITIAL_STATE = {
   logged: false,
   error: false,
   errorStatus: null,
   isErrorMessageVisible: false,
+  isProgressBarVisible: false,
 }
 const loginReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -21,11 +22,21 @@ const loginReducer = (state = INITIAL_STATE, action) => {
         error: true,
         errorStatus: action.err.response.status,
       }
-    case TOGGLE_ERROR_MESSAGE:
-        return {
-          ...state,
-          isErrorMessageVisible: !state.isErrorMessageVisible,
-        }
+    case ADD_ERROR_MESSAGE:
+      return {
+        ...state,
+        isErrorMessageVisible: action.value,
+      }
+    case CLEAR_ERROR_MESSAGE:
+      return {
+        ...state,
+        isErrorMessageVisible: action.value,
+      }
+    case TOGGLE_PROGRESS_BAR_MODAL:
+      return {
+        ...state,
+        isProgressBarVisible: !state.isProgressBarVisible,
+      }
     default:
       return state
   }
