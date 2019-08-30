@@ -7,11 +7,18 @@ export const CLEAR_ERROR_MESSAGE = 'CLEAR_ERROR_MESSAGE';
 export const TOGGLE_PROGRESS_BAR_MODAL = 'TOGGLE_PROGRESS_BAR_MODAL';
 
 export const loginUser = data => dispatch => {
-
-  axios.post('https://bench-api.applover.pl/api/v1/session', data)
-    .then(() => {
-      dispatch({type: LOGIN_SUCCESS})
-      dispatch({type: CLEAR_ERROR_MESAGE}, false)
+  const user = {
+    email: data.email,
+    password: data.password
+  }
+  axios.post('https://bench-api.applover.pl/api/v1/session', user)
+    .then((res) => {
+      if(data.remember) {
+        localStorage.setItem('token', res.data.token);
+      }
+      dispatch({ type: LOGIN_SUCCESS })
+      dispatch({ type: CLEAR_ERROR_MESAGE }, false)
+    
     })
     .catch(err => {
       const value = true;

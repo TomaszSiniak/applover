@@ -9,10 +9,10 @@ import styles from './styles.scss';
 
 class Login extends Component {
 
-
   state = {
     email: null,
     password: null,
+    remember: false,
   }
 
   handleInput = e => {
@@ -50,9 +50,16 @@ class Login extends Component {
     this.props.closeErrorMessage(value)
   }
 
+  handleRememberMe = () => {
+    this.setState({
+      remember: !this.state.remember,
+    })
+  }
+
   render () {
-    const { errorMessage, progressBar, loggedIn } = this.props;
-    if(loggedIn) return <Redirect to='/home' />
+    const { errorMessage, progressBar, loggedIn, token } = this.props;
+    console.log('dupa', this.props)
+    if(token) return <Redirect to='/home' />
     return (
       <div className={styles.LoginWrapper}>
         {errorMessage && <LoginError closeError={this.handleCloseLoginError} />}
@@ -61,7 +68,7 @@ class Login extends Component {
           <input className={styles.LoginInput} onChange={this.handleInput} name="email" type="text" placeholder="Email address" />
           <input className={styles.LoginInput} onChange={this.handleInput} name="password" type="password" placeholder="Password" />
           <div className={styles.LoginCheckBoxWrapper}>
-            <input id={styles.LoginCheckBox} type="checkbox" />
+            <input id={styles.LoginCheckBox} type="checkbox" onClick={this.handleRememberMe} />
             <label className={styles.LogiCheckBoxLabel} htmlFor={styles.LoginCheckBox}>Keep me logged in</label>
           </div>
           <button className={styles.LoginButton}>Login</button>
