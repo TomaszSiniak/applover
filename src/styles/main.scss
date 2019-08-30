@@ -22,4 +22,9 @@ html, body {
 .AppContainer {
   width: 100%;
   height: 100%;
+
+}
+
+.AppContainerBlur {
+  filter: blur(5px);
 }

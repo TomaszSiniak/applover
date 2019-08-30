@@ -6,6 +6,7 @@ import Portal from '../Portal/Portal';
 import ProgressBar from '../../../common/components/ProgressBar/ProgressBar';
 import { connect } from 'react-redux';
 import styles from './styles.scss';
+import { AppContainer } from 'react-hot-loader';
 
 class Login extends Component {
 
@@ -32,8 +33,14 @@ class Login extends Component {
     if (!email || !password) return;
 
     this.handleProgressBar();
+    // add blur - dodać refy
+    const appContainer = document.body.querySelector('.AppContainer--29Dl7');
+    appContainer.classList.add('AppContainerBlur--2il6s');
     setTimeout(() => {
       this.props.login(this.state);
+      // remove blur dodac refy
+      const appContainer = document.body.querySelector('.AppContainer--29Dl7');
+      appContainer.classList.remove('AppContainerBlur--2il6s');
     }, 2000);
   }
 
@@ -56,10 +63,9 @@ class Login extends Component {
     })
   }
 
-  render () {
+  render() {
     const { errorMessage, progressBar, loggedIn, token } = this.props;
-    console.log('dupa', this.props)
-    if(token) return <Redirect to='/home' />
+    if (token) return <Redirect to='/home' />
     return (
       <div className={styles.LoginWrapper}>
         {errorMessage && <LoginError closeError={this.handleCloseLoginError} />}
