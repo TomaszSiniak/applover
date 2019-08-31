@@ -63,9 +63,9 @@ class Login extends Component {
     })
   }
 
-  render() {
-    const { errorMessage, progressBar, loggedIn, token } = this.props;
-    if (token) return <Redirect to='/home' />
+  render () {
+    const { errorMessage, progressBar, loggedIn } = this.props;
+    if (loggedIn) return <Redirect to='/home' />
     return (
       <div className={styles.LoginWrapper}>
         {errorMessage && <LoginError closeError={this.handleCloseLoginError} />}
@@ -91,9 +91,9 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.loginReducer.logged,
-    errorMessage: state.loginReducer.isErrorMessageVisible,
-    progressBar: state.loginReducer.isProgressBarVisible,
+    loggedIn: state.login.logged,
+    errorMessage: state.login.isErrorMessageVisible,
+    progressBar: state.login.isProgressBarVisible,
   }
 }
 

@@ -1,0 +1,18 @@
+@import '../../../styles/variables.scss';
+
+.OrganizationButtonWrapper {
+  position: absolute;
+  top: 24px;
+  right: 64px;
+}
+.OrganizationButton {
+  width: 118px;
+  height: 32px;
+  background: $button-background;    
+  border-radius: 3px;
+  font-size: $font-size-ss;
+  color: $text-color-white;
+  border: none;
+  outline: none;
+  margin-left: 19px;
+}

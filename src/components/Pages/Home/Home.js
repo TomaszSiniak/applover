@@ -1,36 +1,27 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import OrganizationInfo from '../../Organization/OrganizationInfo/OrganizationInfo';
 import { connect } from 'react-redux';
 
 class Home extends Component {
-  render() {
-    const { loggedIn } = this.props;
-    if(loggedIn === false) return  <Redirect to='/' />
+  render () {
+    const { loggedIn, organizationInfoVisiblity } = this.props;
+    if (loggedIn === false) return <Redirect to='/' />
+    console.log(this.props)
     return (
       <div>
-        Home
+        {organizationInfoVisiblity && <OrganizationInfo />}
       </div>
     )
   }
 }
 
-
-
 const mapStateToProps = state => {
   return {
-    loggedIn: state.loginReducer.logged,
-    // errorMessage: state.loginReducer.isErrorMessageVisible,
-    // progressBar: state.loginReducer.isProgressBarVisible,
+    loggedIn: state.login.logged,
+    organizationInfoVisiblity: state.app.organizationInfoVisiblity,
+
   }
 }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     login: data => dispatch(loginUser(data)),
-//     closeErrorMessage: value => dispatch(clearErrorMessage(value)),
-//     showLoader: () => dispatch(toggleProgressBar())
-
-//   }
-// }
 
 export default connect(mapStateToProps)(Home);

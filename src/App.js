@@ -4,10 +4,10 @@ import MainContent from './layout/MainContent/MainContent';
 
 const App = () => {
 
-  const token = localStorage.getItem('token');
+
   return (
     <div className={styles.AppContainer}>
-      <MainContent token={token}/>
+      <MainContent/>
     </div>
   )
 }

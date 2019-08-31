@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   isErrorMessageVisible: false,
   isProgressBarVisible: false,
 }
-const loginReducer = (state = INITIAL_STATE, action) => {
+const login = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
@@ -42,4 +42,4 @@ const loginReducer = (state = INITIAL_STATE, action) => {
   }
 }
 
-export default loginReducer;
+export default login;

@@ -1,12 +1,9 @@
-@import '../../../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .SelectLanguageWrapper {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  position: relative;
-  top:24px;
-  right: 201px;
+  padding-right: 200px;
 }
 
 .SelectLanguageTitle {

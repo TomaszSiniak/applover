@@ -11,8 +11,8 @@ class MainContent extends Component {
         <Navbar />
         <Router>
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route exact path='/home' component={Home} />
+           <Route exact path='/' component={Login} /> 
+            <Route path='/home' component={Home} />
           </Switch>
         </Router>
       </div>
