@@ -5,6 +5,8 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const ADD_ERROR_MESSAGE = 'ADD_ERROR_MESSAGE';
 export const CLEAR_ERROR_MESSAGE = 'CLEAR_ERROR_MESSAGE';
 export const TOGGLE_PROGRESS_BAR_MODAL = 'TOGGLE_PROGRESS_BAR_MODAL';
+export const NOT_LOGIN_OUT = 'NOT_LOGIN_OUT';
+
 import { LOGIN_URL } from  '../../common/const/const';
 
 export const loginUser = data => dispatch => {
@@ -13,10 +15,10 @@ export const loginUser = data => dispatch => {
     password: data.password
   }
   axios.post(LOGIN_URL, user)
-    .then((res) => {
-
+    .then(res => {
       localStorage.setItem('token', res.data.token);
-      
+      localStorage.setItem('remember', data.remember);
+
       dispatch({ type: LOGIN_SUCCESS })
       dispatch({ type: CLEAR_ERROR_MESAGE }, false)
     
@@ -45,5 +47,11 @@ export const clearErrorMessage = value => {
 export const toggleProgressBar = () => {
   return {
     type: TOGGLE_PROGRESS_BAR_MODAL,
+  }
+}
+
+export const tokenCheck = () => {
+  return {
+    type: NOT_LOGIN_OUT
   }
 }
