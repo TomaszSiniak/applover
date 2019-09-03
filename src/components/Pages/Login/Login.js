@@ -65,7 +65,7 @@ class Login extends Component {
 
   render () {
     const { errorMessage, progressBar, loggedIn } = this.props;
-    if (loggedIn) return <Redirect to='/home' />
+    if (loggedIn) return <Redirect to='/configurator' />
     return (
       <div className={styles.LoginWrapper}>
         {errorMessage && <LoginError closeError={this.handleCloseLoginError} />}

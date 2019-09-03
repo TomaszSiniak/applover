@@ -1,0 +1,52 @@
+
+@import '../../../../styles/variables.scss';
+
+.ProgressWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.ProgressItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 48px;
+}
+
+.GreatCircle{
+  width: 46px;
+  height: 46px;
+  background: $progress-circle-background;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.GreatCircleActive{
+  @extend .GreatCircle;
+  background: $progress-circle-background-active;
+ 
+}
+
+.SmallCircle {
+  width: 6px; 
+  height: 6px;
+  border-radius: 50%;
+  background: $small-progress-circle-background;
+}
+
+.SmallCircleActive {
+  @extend .SmallCircle;
+  background: $small-progress-circle-bnackground-active
+}
+
+.ProgressInfo {
+  font-size: $font-size-us;
+  color: $text-color-progress;
+}
+

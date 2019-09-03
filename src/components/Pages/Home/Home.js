@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import OrganizationInfo from '../../Organization/OrganizationInfo/OrganizationInfo';
+import Configurator from '../Configurator/Configurator';
 import { connect } from 'react-redux';
 
 class Home extends Component {
   render () {
     const { loggedIn, organizationInfoVisiblity } = this.props;
     if (loggedIn === false) return <Redirect to='/' />
-    console.log(this.props)
     return (
-      <div>
+      <Fragment>
+        <Configurator />
         {organizationInfoVisiblity && <OrganizationInfo />}
-      </div>
+      </Fragment>
     )
   }
 }

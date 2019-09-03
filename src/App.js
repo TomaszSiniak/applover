@@ -8,7 +8,6 @@ const App = props => {
 
   const token = localStorage.getItem('token');
   const settings = localStorage.getItem('remember');
-  console.log(settings);
   
   if(token && settings === 'true') props.auth();
 
