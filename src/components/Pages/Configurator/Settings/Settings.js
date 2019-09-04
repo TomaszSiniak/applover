@@ -8,7 +8,7 @@ import styles from './settings.scss';
 class Settings extends Component {
 
   renderChooseDoorDivision = () => {
-    const { beamsNumber, addBeam, minusBeam, addPost, postsNumber, minusPost, step, nextStep, previousStep} = this.props;
+    const { beamsNumber, addBeam, minusBeam, addPost, postsNumber, minusPost, step, nextStep, previousStep } = this.props;
     return (
       <div className={styles.SettingsWrapper}>
         <div className={styles.SettingsPart}>
@@ -16,7 +16,7 @@ class Settings extends Component {
           <div className={styles.DoorDivisionDataRow}>
             <div className={styles.DoorDivisionDataTitle}>Numbers of beams</div>
             <div className={styles.DoorDivisionCounterWrapper}>
-              <input className={styles.DoorDivisionNumber} disabled value={`${beamsNumber}`}/>
+              <input className={styles.DoorDivisionNumber} disabled value={`${beamsNumber}`} />
               <button className={styles.DoorDivisionCounter} onClick={addBeam}>+</button>
               <button className={styles.DoorDivisionCounter} onClick={minusBeam}>-</button>
             </div>
@@ -24,7 +24,7 @@ class Settings extends Component {
           <div className={styles.DoorDivisionDataRow}>
             <div className={styles.DoorDivisionDataTitle}>Numbers of posts</div>
             <div className={styles.DoorDivisionCounterWrapper}>
-              <input className={styles.DoorDivisionNumber} disabled value={`${postsNumber}`}/>
+              <input className={styles.DoorDivisionNumber} disabled value={`${postsNumber}`} />
               <button className={styles.DoorDivisionCounter} onClick={addPost}>+</button>
               <button className={styles.DoorDivisionCounter} onClick={minusPost}>-</button>
             </div>
@@ -35,10 +35,54 @@ class Settings extends Component {
     )
   }
 
-  render () {
+  renderColorDoor = () => {
+    const { step, nextStep, previousStep } = this.props;
+    return (
+      <div className={styles.SettingsWrapper}>
+        <div className={styles.SettingsPart}>
+          <div className={styles.SettingsPartTitle}>Choose color</div>
+          <div className={styles.SettingsColorWrapper}>
+
+
+
+            <div className={styles.SettingColorOption}>
+              <div className={styles.SettingColorView} />
+              <label className={styles.CheckboxWrapper}>Black
+                <input type="radio" name="door-color" checked />
+                <span className={styles.Checkmark}></span>
+              </label>
+            </div>
+            <div className={styles.SettingColorOption}>
+              <div className={styles.SettingColorView} />
+              <label className={styles.CheckboxWrapper}>Gray
+                <input type="radio" name="door-color" checked />
+                <span className={styles.Checkmark}></span>
+              </label>
+            </div>
+
+            <div className={styles.SettingColorOption}>
+              <div className={styles.SettingColorView} />
+              <label className={styles.CheckboxWrapper}>Yellow
+                <input type="radio" name="door-color" checked />
+                <span className={styles.Checkmark}></span>
+              </label>
+            </div>
+
+
+
+
+          </div>
+        </div>
+        <Buttons step={step} nextStep={nextStep} previousStep={previousStep} />
+      </div>
+    )
+  }
+
+  render() {
     const { step, toggleModal, doorTypeModalVisibility, nextStep, previousStep } = this.props;
 
     if (step === 2) return this.renderChooseDoorDivision();
+    if (step === 3) return this.renderColorDoor();
 
     return (
       <div className={styles.SettingsWrapper}>
@@ -53,7 +97,7 @@ class Settings extends Component {
             <span className={styles.Checkmark}></span>
           </label>
           <label className={styles.CheckboxWrapper}>Double door
-          <input type="radio" name="door-select"/>
+          <input type="radio" name="door-select" />
             <span className={styles.Checkmark}></span>
           </label>
         </div>
@@ -68,7 +112,7 @@ class Settings extends Component {
             <input className={styles.DoorSizeInput} type="number" defaultValue="250" />
           </div>
         </div>
-        <Buttons step={step} nextStep={nextStep} previousStep={previousStep}/>
+        <Buttons step={step} nextStep={nextStep} previousStep={previousStep} />
         {doorTypeModalVisibility && (
           <Portal>
             <DoorTypeModal toggleModal={toggleModal} />

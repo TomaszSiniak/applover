@@ -2,7 +2,7 @@
 .SettingsWrapper {
   position: relative;
   margin-top: 20px;
-  min-width: 153px;
+  min-width: 240px;
 }
 .SettingsPart {
   position: relative;
@@ -43,8 +43,9 @@
   left: 0;
   height: 16px;
   width: 16px;
-  background-color: #eee;
   border-radius: 50%;
+  border: 3px solid #6991B2;
+  box-sizing: border-box;
 }
 
 .Checkmark:after {
@@ -58,10 +59,10 @@
 }
 
 .CheckboxWrapper .Checkmark:after {
- 	top: 4px;
-	left: 4px;
-	width: 7px;
-	height: 7px;
+ 	top: 2px;
+	left: 2px;
+	width: 6px;
+	height: 6px;
 	border-radius: 50%;
 	background: #6991B2;
 }
@@ -137,4 +138,24 @@
 
 .DoorDivisionDataRow:nth-child(3) > div {
   margin-right: 8px;
+}
+
+// Door colors
+
+.SettingsColorWrapper {
+  display: flex;
+}
+.SettingColorOption {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-right:20px;
+}
+.SettingColorView {
+  width: 40px;
+  height: 40px;
+  background: #000;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
