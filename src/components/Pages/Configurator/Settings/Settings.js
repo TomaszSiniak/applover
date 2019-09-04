@@ -13,7 +13,6 @@ class Settings extends Component {
       <div className={styles.SettingsWrapper}>
         <div className={styles.SettingsPart}>
           <div className={styles.SettingsPartTitle}>Door division</div>
-
           <div className={styles.DoorDivisionDataRow}>
             <div className={styles.DoorDivisionDataTitle}>Numbers of beams</div>
             <div className={styles.DoorDivisionCounterWrapper}>
@@ -30,9 +29,7 @@ class Settings extends Component {
               <button className={styles.DoorDivisionCounter} onClick={minusPost}>-</button>
             </div>
           </div>
-
         </div>
-
         <Buttons step={step} nextStep={nextStep} previousStep={previousStep} />
       </div>
     )
@@ -52,11 +49,11 @@ class Settings extends Component {
             </figure>
           </div>
           <label className={styles.CheckboxWrapper}>Single door
-          <input type="checkbox" />
+          <input type="radio" name="door-select" checked />
             <span className={styles.Checkmark}></span>
           </label>
           <label className={styles.CheckboxWrapper}>Double door
-          <input type="checkbox" />
+          <input type="radio" name="door-select"/>
             <span className={styles.Checkmark}></span>
           </label>
         </div>

@@ -77,6 +77,10 @@
   border: 1px solid #A8A5A5;
 }
 
+.DoorSizeInputWrapper:nth-child(2) label {
+  margin-right: 5px;
+}
+
 .DoorSizeInput::after {
   content: 'cm';
   display: block;
@@ -92,7 +96,6 @@
 
 .DoorDivisionDataRow {
   display: flex;
-  // justify-content: center;
   align-items: center;
   margin: 5px 0;
 }
@@ -130,4 +133,8 @@
   border: none;
   margin: 0 2px;
   outline: none;
+}
+
+.DoorDivisionDataRow:nth-child(3) > div {
+  margin-right: 8px;
 }
