@@ -21,7 +21,7 @@ export const loginUser = data => dispatch => {
 
       dispatch({ type: LOGIN_SUCCESS })
       dispatch({ type: CLEAR_ERROR_MESAGE }, false)
-    
+
     })
     .catch(err => {
       const value = true;
