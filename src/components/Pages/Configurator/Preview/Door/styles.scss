@@ -1,0 +1,20 @@
+.DoorWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  max-width: 150px;
+  border-top: 5px solid #444;
+  border-left: 5px solid #444;
+}
+
+.DoorRow {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+}
+
+.DoorBox {
+  border-bottom: 5px solid #444;
+  border-right:  5px solid #444;
+  background-color: #fff;
+  padding: 30px 10px;
+}
