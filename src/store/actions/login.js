@@ -14,7 +14,7 @@ export const loginUser = data => dispatch => {
     email: data.email,
     password: data.password
   }
-  axios.post('https:/bench-api.applover.pl/api/v1/session', user)
+  axios.post(LOGIN_URL, user)
     .then(res => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('remember', data.remember);
