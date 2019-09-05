@@ -1,6 +1,10 @@
 
 @import '../../../../styles/variables.scss';
 
+.ProgressContainer {
+  max-width: 1366px;
+  margin: 0 auto;
+}
 .ProgressWrapper {
   width: 100%;
   display: flex;
@@ -13,7 +17,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 48px;
+  margin: 0 20px;
+}
+
+.ProgressItem:last-child{
+  padding-right: 60px;
 }
 
 .GreatCircle{
@@ -30,11 +38,11 @@
 .GreatCircleActive{
   @extend .GreatCircle;
   background: $progress-circle-background-active;
- 
+
 }
 
 .SmallCircle {
-  width: 6px; 
+  width: 6px;
   height: 6px;
   border-radius: 50%;
   background: $small-progress-circle-background;
@@ -49,4 +57,3 @@
   font-size: $font-size-us;
   color: $text-color-progress;
 }
-

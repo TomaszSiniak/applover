@@ -42,35 +42,27 @@ class Settings extends Component {
         <div className={styles.SettingsPart}>
           <div className={styles.SettingsPartTitle}>Choose color</div>
           <div className={styles.SettingsColorWrapper}>
-
-
-
             <div className={styles.SettingColorOption}>
               <div className={styles.SettingColorView} />
               <label className={styles.CheckboxWrapper}>Black
-                <input type="radio" name="door-color" checked />
+                <input type="radio" name="door-color" />
                 <span className={styles.Checkmark}></span>
               </label>
             </div>
             <div className={styles.SettingColorOption}>
-              <div className={styles.SettingColorView} />
+              <div className={styles.SettingColorView} style={{background: '#797474'}}/>
               <label className={styles.CheckboxWrapper}>Gray
-                <input type="radio" name="door-color" checked />
+                <input type="radio" name="door-color" />
                 <span className={styles.Checkmark}></span>
               </label>
             </div>
-
             <div className={styles.SettingColorOption}>
-              <div className={styles.SettingColorView} />
-              <label className={styles.CheckboxWrapper}>Yellow
-                <input type="radio" name="door-color" checked />
+              <div className={styles.SettingColorView} style={{background: '#F4F2F2'}}/>
+              <label className={styles.CheckboxWrapper}>White
+                <input type="radio" name="door-color"/>
                 <span className={styles.Checkmark}></span>
               </label>
             </div>
-
-
-
-
           </div>
         </div>
         <Buttons step={step} nextStep={nextStep} previousStep={previousStep} />

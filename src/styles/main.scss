@@ -34,10 +34,11 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input[type="number"] {
     -moz-appearance: textfield;
 }
 
 input[type="number"] {
-  background-color: #ffffff;
+  background-color: $background-color;
 }

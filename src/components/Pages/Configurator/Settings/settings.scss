@@ -19,7 +19,7 @@
   width:100%;
   font-size: $font-size-ss;
   padding-bottom: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 16.5px;
 }
 
 .CheckboxWrapper {
@@ -44,7 +44,7 @@
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  border: 3px solid #6991B2;
+  border: 3px solid $progress-circle-background;
   box-sizing: border-box;
 }
 
@@ -153,8 +153,8 @@
   margin-right:20px;
 }
 .SettingColorView {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   background: #000;
   border-radius: 50%;
   margin-bottom: 10px;
