@@ -8,6 +8,7 @@ export const DOOR_TYPE_MODAL_VISIBILITY = 'DOOR_TYPE_MODAL_VISIBILITY';
 
 
 export const getOrganizationInfo = () => dispatch => {
+  console.log(organizationConfig)
   axios.get(ORGANIZATION_URL, organizationConfig)
     .then(res => {
       const data = res.data
