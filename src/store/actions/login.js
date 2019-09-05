@@ -14,14 +14,14 @@ export const loginUser = data => dispatch => {
     email: data.email,
     password: data.password
   }
-  axios.post(LOGIN_URL, user)
+  axios.post('https:/bench-api.applover.pl/api/v1/session', user)
     .then(res => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('remember', data.remember);
 
       dispatch({ type: LOGIN_SUCCESS })
       dispatch({ type: CLEAR_ERROR_MESAGE }, false)
-    
+
     })
     .catch(err => {
       const value = true;
